@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "person1"
+    },
+    {
+      "id": 2,
+      "name": "person2"
+    },
+    {
+      "id": 3,
+      "name": "person3"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "project1",
+      "personId": 1,
+      "organization": "organization1",
+      "created": 1604989757139
+    },
+    {
+      "id": 2,
+      "name": "project2",
+      "personId": 1,
+      "organization": "organization1",
+      "created": 1604989757139
+    },
+    {
+      "id": 3,
+      "name": "project3",
+      "personId": 2,
+      "organization": "organization2",
+      "created": 1604989757139
+    },
+    {
+      "id": 4,
+      "name": "project4",
+      "personId": 2,
+      "organization": "organization2",
+      "created": 1604989757139
+    },
+    {
+      "id": 5,
+      "name": "project5",
+      "personId": 3,
+      "organization": "organization3",
+      "created": 1604989757139
+    }
+  ]
+}
