@@ -6,7 +6,7 @@ import qs from "qs";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const ProjectListPage = () => {
+export const ProjectListPage = () => {
   const [param, setParam] = useState({
     name: "",
     personId: "",
@@ -39,5 +39,3 @@ const ProjectListPage = () => {
     </div>
   );
 };
-
-export default ProjectListPage;

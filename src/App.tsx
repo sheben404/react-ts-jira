@@ -1,12 +1,10 @@
-import LoginPage from "./pages/Login";
-import ProjectListPage from "./pages/ProjectList";
+import { AuthenticatedApp } from "./AuthenticatedApp";
+import { useAuth } from "./context/AuthContext";
+import { UnAuthenticatedApp } from "./UnAuthenticatedApp";
+
 function App() {
-  return (
-    <div>
-      <LoginPage />
-      {/* <ProjectListPage /> */}
-    </div>
-  );
+  const { user } = useAuth();
+  return <div>{user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}</div>;
 }
 
 export default App;

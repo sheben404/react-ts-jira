@@ -1,14 +1,15 @@
+import { useAuth } from "../context/AuthContext";
 import { FormEvent } from "react";
 
-const LoginPage = () => {
-  const login = (param: { username: string; password: string }) => {};
+const RegisterPage = () => {
+  const { register, user } = useAuth();
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.currentTarget.elements[0] as HTMLInputElement)
       .value;
     const password = (event.currentTarget.elements[1] as HTMLInputElement)
       .value;
-    login({ username, password });
+    register({ username, password });
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -20,9 +21,9 @@ const LoginPage = () => {
         <label htmlFor="password">password</label>
         <input type="password" id="password" />
       </div>
-      <button type="submit">登录</button>
+      <button type="submit">注册</button>
     </form>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
