@@ -1,21 +1,7 @@
 import { FormEvent } from "react";
 
-const apiUrl = import.meta.env.VITE_API_URL;
-
 const LoginPage = () => {
-  const login = (param: { username: string; password: string }) => {
-    fetch(`${apiUrl}/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(param),
-    }).then(async (res) => {
-      if (res.ok) {
-        console.log("ok");
-      }
-    });
-  };
+  const login = (param: { username: string; password: string }) => {};
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.currentTarget.elements[0] as HTMLInputElement)
@@ -34,7 +20,7 @@ const LoginPage = () => {
         <label htmlFor="password">password</label>
         <input type="password" id="password" />
       </div>
-      <button type="submit">提交</button>
+      <button type="submit">登录</button>
     </form>
   );
 };
