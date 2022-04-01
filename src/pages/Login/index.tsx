@@ -4,7 +4,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 const LoginPage = () => {
   const login = (param: { username: string; password: string }) => {
-    fetch(`${apiUrl}login`, {
+    fetch(`${apiUrl}/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

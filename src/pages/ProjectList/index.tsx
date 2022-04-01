@@ -18,7 +18,7 @@ const ProjectListPage = () => {
   const debouncedParam = useDebounce(param, 200);
   useEffect(() => {
     fetch(
-      `${apiUrl}projects?${qs.stringify(cleanObject(debouncedParam))}`
+      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
     ).then(async (res) => {
       if (res.ok) {
         setList(await res.json());
@@ -26,7 +26,7 @@ const ProjectListPage = () => {
     });
   }, [debouncedParam]);
   useMount(() => {
-    fetch(`${apiUrl}users`).then(async (res) => {
+    fetch(`${apiUrl}/users`).then(async (res) => {
       if (res.ok) {
         setUsers(await res.json());
       }

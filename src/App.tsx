@@ -3,8 +3,8 @@ import ProjectListPage from "./pages/ProjectList";
 function App() {
   return (
     <div>
-      <LoginPage />
-      {/* <ProjectListPage /> */}
+      {/* <LoginPage /> */}
+      <ProjectListPage />
     </div>
   );
 }
