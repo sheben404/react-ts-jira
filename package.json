@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "json-server": "json-server __mock__/db.json --watch --port=3001"
+    "json-server": "json-server __mock__/db.json --watch --port=3001 --middlewares __mock__/middleware.js"
   },
   "dependencies": {
     "qs": "^6.10.3",

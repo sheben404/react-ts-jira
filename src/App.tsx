@@ -1,8 +1,10 @@
+import LoginPage from "./pages/Login";
 import ProjectListPage from "./pages/ProjectList";
 function App() {
   return (
     <div>
-      <ProjectListPage />
+      <LoginPage />
+      {/* <ProjectListPage /> */}
     </div>
   );
 }
