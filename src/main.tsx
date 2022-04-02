@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { loadDevTools } from "./service-worker";
+import "antd/dist/antd.less";
 import { AppProviders } from "./context";
 
 loadDevTools(() =>
