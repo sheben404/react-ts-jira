@@ -3,8 +3,11 @@ import { cleanObject, useDebounce, useMount } from "../../utils";
 import { List } from "./List";
 import { SearchPanel } from "./SearchPanel";
 import { useHttp } from "../../utils/http";
+import styled from "styled-components";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const Container = styled.div`
+  padding: 3.2rem;
+`;
 
 export const ProjectListPage = () => {
   const [param, setParam] = useState({
@@ -24,9 +27,10 @@ export const ProjectListPage = () => {
     client("users?").then(setUsers);
   });
   return (
-    <div>
+    <Container>
+      <h1>项目列表</h1>
       <SearchPanel users={users} param={param} setParam={setParam} />
       <List users={users} list={list} />
-    </div>
+    </Container>
   );
 };

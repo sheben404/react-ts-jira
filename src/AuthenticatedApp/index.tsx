@@ -1,3 +1,4 @@
+import { Dropdown, Menu } from "antd";
 import { Row } from "components/lib";
 import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
@@ -11,6 +12,8 @@ const Container = styled.div`
 
 const Header = styled(Row)`
   justify-content: space-between;
+  padding: 3.2rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 `;
 
 const HeaderLeft = styled(Row)``;
@@ -22,7 +25,7 @@ const Main = styled.main`
 `;
 
 export const AuthenticatedApp = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   return (
     <Container>
       <Header between={true}>
@@ -32,7 +35,17 @@ export const AuthenticatedApp = () => {
           <h2>用户</h2>
         </HeaderLeft>
         <HeaderRight>
-          <button onClick={logout}>登出</button>
+          <Dropdown
+            overlay={
+              <Menu>
+                <Menu.Item key={"logout"}>
+                  <a onClick={logout}>登出</a>
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <a>Hi, {user?.name}</a>
+          </Dropdown>
         </HeaderRight>
       </Header>
       <Main>
