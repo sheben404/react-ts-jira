@@ -42,7 +42,7 @@ export const kanbans = [
     name: "待完成",
   },
   {
-    name: "开发中",
+    name: "进行中",
   },
   {
     name: "已完成",
@@ -52,27 +52,39 @@ export const kanbans = [
 export const users = [
   {
     name: "高修文",
-    organization: "外卖组",
+    organization: "信息工程学院",
   },
   {
     name: "熊天成",
-    organization: "外卖组",
+    organization: "体育学院",
   },
   {
     name: "郑华",
-    organization: "总部组",
+    organization: "外国语学院",
   },
   {
     name: "王文静",
-    organization: "中台组",
+    organization: "经济管理学院",
   },
 ];
 
 export const projects = [
   {
-    name: "快递管理",
+    name: "书籍分发",
+    personId: 4,
+    organization: "经济管理学院",
+    created: 1604989757139,
+  },
+  {
+    name: "软件分班",
     personId: 1,
-    organization: "快递组",
+    organization: "信息工程学院",
+    created: 1604989757139,
+  },
+  {
+    name: "运动会",
+    personId: 2,
+    organization: "体育学院",
     created: 1604989757139,
   },
 ];
