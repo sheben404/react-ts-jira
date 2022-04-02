@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "../../utils";
 import { List } from "./List";
 import { SearchPanel } from "./SearchPanel";
-import qs from "qs";
+import { useHttp } from "../../utils/http";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -14,23 +14,14 @@ export const ProjectListPage = () => {
 
   const [users, setUsers] = useState([]);
   const [list, setList] = useState([]);
+  const client = useHttp();
 
   const debouncedParam = useDebounce(param, 200);
   useEffect(() => {
-    fetch(
-      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
-    ).then(async (res) => {
-      if (res.ok) {
-        setList(await res.json());
-      }
-    });
+    client("projects?", { data: cleanObject(debouncedParam) }).then(setList);
   }, [debouncedParam]);
   useMount(() => {
-    fetch(`${apiUrl}/users`).then(async (res) => {
-      if (res.ok) {
-        setUsers(await res.json());
-      }
-    });
+    client("users?").then(setUsers);
   });
   return (
     <div>
