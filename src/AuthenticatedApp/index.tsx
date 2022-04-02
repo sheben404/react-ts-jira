@@ -1,4 +1,4 @@
-import { Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import { Row } from "components/lib";
 import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
@@ -44,7 +44,7 @@ export const AuthenticatedApp = () => {
               </Menu>
             }
           >
-            <a>Hi, {user?.name}</a>
+            <Button type="link">Hi, {user?.name}</Button>
           </Dropdown>
         </HeaderRight>
       </Header>
