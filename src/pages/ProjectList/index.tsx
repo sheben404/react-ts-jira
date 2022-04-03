@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "../../utils";
-import { List } from "./List";
+import { List, Project } from "./List";
 import { SearchPanel } from "./SearchPanel";
 import { useHttp } from "../../utils/http";
 import styled from "styled-components";
 import { Typography } from "antd";
+import { useAsync } from "utils/useAsync";
 
 const Container = styled.div`
   padding: 3.2rem;
@@ -15,28 +16,13 @@ export const ProjectListPage = () => {
     name: "",
     personId: "",
   });
-
   const [users, setUsers] = useState([]);
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<null | Error>(null);
+  const { run, error, isLoading, data: list } = useAsync<Project[]>();
   const client = useHttp();
 
   const debouncedParam = useDebounce(param, 200);
   useEffect(() => {
-    setLoading(true);
-    client("projects?", { data: cleanObject(debouncedParam) })
-      .then((list) => {
-        setList(list);
-        setError(null);
-      })
-      .catch((error) => {
-        setList([]);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    run(client("projects?", { data: cleanObject(debouncedParam) }));
   }, [debouncedParam]);
   useMount(() => {
     client("users?").then(setUsers);
@@ -48,7 +34,7 @@ export const ProjectListPage = () => {
       {error ? (
         <Typography.Text type="danger">{error.message}</Typography.Text>
       ) : null}
-      <List users={users} dataSource={list} loading={loading} />
+      <List users={users} dataSource={list || []} loading={isLoading} />
     </Container>
   );
 };
