@@ -15,6 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
+      "service-worker": resolve(__dirname, "src/service-worker"),
       components: resolve(__dirname, "src/components"),
       AuthenticatedApp: resolve(__dirname, "src/AuthenticatedApp"),
       UnAuthenticatedApp: resolve(__dirname, "src/UnAuthenticatedApp"),
