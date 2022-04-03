@@ -54,14 +54,6 @@ export const UnAuthenticatedApp = () => {
       <Header />
       <Background />
       <ShadowCard>
-        {/* 其他阶段产生的异常 */}
-        <Button
-          onClick={() => {
-            throw new Error("点击抛出的异常");
-          }}
-        >
-          抛出异常
-        </Button>
         <Title>{isRegister ? "请注册" : "请登录"}</Title>
         {error && (
           <Typography.Text type={"danger"}>{error.message}</Typography.Text>

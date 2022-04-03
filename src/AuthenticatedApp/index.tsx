@@ -26,11 +26,8 @@ const Main = styled.main`
 
 export const AuthenticatedApp = () => {
   const { logout, user } = useAuth();
-  // 渲染阶段产生的异常
-  const obj: any = undefined;
   return (
     <Container>
-      <div>{obj.notExist}</div>
       <Header between={true}>
         <HeaderLeft gap={true}>
           <h2>Logo</h2>
