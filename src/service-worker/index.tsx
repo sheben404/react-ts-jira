@@ -1,10 +1,11 @@
 import { startServer } from "./server/index.js";
-import { installDevTool } from "./dev-tool";
+import { DevTool } from "./dev-tool";
 
 export const loadDevTools = (callback: () => void) => {
   startServer();
-  installDevTool();
   if (callback) {
     callback();
   }
 };
+
+export const DevTools = DevTool;
