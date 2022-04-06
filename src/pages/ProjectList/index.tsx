@@ -13,11 +13,7 @@ const Container = styled.div`
 `;
 
 export const ProjectListPage = () => {
-  const [, setParam] = useState({
-    name: "",
-    personId: "",
-  });
-  const [param] = useUrlQueryParam(["name", "personId"]);
+  const [param, setParam] = useUrlQueryParam(["name", "personId"]);
   const debouncedParam = useDebounce(param, 500);
   const { loading, error, list } = useProjects(debouncedParam);
   const { users } = useUsers();
@@ -36,4 +32,4 @@ export const ProjectListPage = () => {
   );
 };
 
-ProjectListPage.whyDidYouRender = true;
+ProjectListPage.whyDidYouRender = false;
