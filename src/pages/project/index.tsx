@@ -1,7 +1,7 @@
 import { EpicPage } from "pages/Epic";
 import { KanbanPage } from "pages/Kanban";
 import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 
 export const ProjectPage = () => {
   return (
@@ -12,6 +12,12 @@ export const ProjectPage = () => {
       <Routes>
         <Route path={"/kanban"} element={<KanbanPage />} />
         <Route path={"/epic"} element={<EpicPage />} />
+        <Route
+          path="/"
+          element={
+            <Navigate to={window.location.pathname + "/kanban"} replace />
+          }
+        />
       </Routes>
     </div>
   );

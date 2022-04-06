@@ -1,7 +1,7 @@
 import { Button, Dropdown, Menu } from "antd";
 import { Row } from "components/lib";
 import { ProjectPage } from "pages/Project";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
@@ -62,6 +62,7 @@ export const AuthenticatedApp = () => {
           <Routes>
             <Route path={"/projects"} element={<ProjectListPage />} />
             <Route path={"/projects/:projectId/*"} element={<ProjectPage />} />
+            <Route path="/" element={<Navigate to="/projects" replace />} />
           </Routes>
         </Router>
       </Main>
