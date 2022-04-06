@@ -4,6 +4,7 @@ import { ProjectPage } from "pages/Project";
 import { Navigate, Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
+import { resetRoute } from "utils";
 import { useAuth } from "../context/AuthContext";
 import { ProjectListPage } from "../pages/ProjectList";
 
@@ -32,7 +33,9 @@ const PageHeader = () => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
-        <h2>Logo</h2>
+        <h2 onClick={resetRoute} style={{ cursor: "pointer" }}>
+          Ponds
+        </h2>
         <h2>项目</h2>
         <h2>用户</h2>
       </HeaderLeft>
