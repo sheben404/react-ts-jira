@@ -1,6 +1,7 @@
 import { Button, Card, Divider, Typography } from "antd";
 import { useState } from "react";
 import styled from "styled-components";
+import { useDocumentTitle } from "utils";
 import LoginPage from "./Login";
 import RegisterPage from "./Register";
 
@@ -49,6 +50,9 @@ const Container = styled.div`
 export const UnAuthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+
+  useDocumentTitle("登录以继续");
+
   return (
     <Container>
       <Header />

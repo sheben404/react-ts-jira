@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDebounce } from "../../utils";
+import { useDebounce, useDocumentTitle } from "../../utils";
 import { List } from "./List";
 import { SearchPanel } from "./SearchPanel";
 import styled from "styled-components";
@@ -19,6 +19,8 @@ export const ProjectListPage = () => {
   const debouncedParam = useDebounce(param, 500);
   const { loading, error, list } = useProjects(debouncedParam);
   const { users } = useUsers();
+
+  useDocumentTitle("任务列表", false);
 
   return (
     <Container>
