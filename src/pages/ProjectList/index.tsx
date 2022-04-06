@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDebounce, useDocumentTitle } from "../../utils";
 import { List } from "./List";
 import { SearchPanel } from "./SearchPanel";
@@ -6,19 +5,18 @@ import styled from "styled-components";
 import { Typography } from "antd";
 import { useProjects } from "utils/projects";
 import { useUsers } from "utils/users";
-import { useUrlQueryParam } from "utils/url";
+import { useProjectSearchParam } from "./utils";
 
 const Container = styled.div`
   padding: 3.2rem;
 `;
 
 export const ProjectListPage = () => {
-  const [param, setParam] = useUrlQueryParam(["name", "personId"]);
-  const debouncedParam = useDebounce(param, 500);
-  const { loading, error, list } = useProjects(debouncedParam);
-  const { users } = useUsers();
-
   useDocumentTitle("任务列表", false);
+
+  const [param, setParam] = useProjectSearchParam();
+  const { loading, error, list } = useProjects(useDebounce(param, 500));
+  const { users } = useUsers();
 
   return (
     <Container>
