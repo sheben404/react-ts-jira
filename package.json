@@ -31,6 +31,7 @@
     "@types/react-dom": "^17.0.10",
     "@types/styled-components": "^5.1.24",
     "@vitejs/plugin-react": "^1.0.7",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "cross-env": "^7.0.3",
     "husky": "^7.0.4",
     "json-server": "^0.17.0",

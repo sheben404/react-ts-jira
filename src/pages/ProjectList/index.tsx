@@ -35,3 +35,5 @@ export const ProjectListPage = () => {
     </Container>
   );
 };
+
+ProjectListPage.whyDidYouRender = true;
