@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMountedRef } from "utils";
 
 interface State<D> {
   data: D | null;
@@ -26,6 +27,8 @@ export const useAsync = <D>(
   });
 
   const [retry, setRetry] = useState(() => () => {});
+
+  const mountedRef = useMountedRef();
 
   const config = { ...defaultConfig, ...initialConfig };
 
@@ -62,7 +65,9 @@ export const useAsync = <D>(
     });
     return promise
       .then((data) => {
-        setData(data);
+        if (mountedRef.current) {
+          setData(data);
+        }
         return data;
       })
       .catch((error) => {
