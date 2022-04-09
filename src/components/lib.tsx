@@ -1,4 +1,4 @@
-import { Spin, Typography } from "antd";
+import { Spin, Typography, Button } from "antd";
 import { DevTools } from "service-worker";
 import styled from "styled-components";
 
@@ -45,3 +45,7 @@ export const FullPageErrorFallback = ({ error }: { error: Error | null }) => {
     </FullPage>
   );
 };
+
+export const ButtonNoPadding = styled(Button)`
+  padding: 0;
+`;
