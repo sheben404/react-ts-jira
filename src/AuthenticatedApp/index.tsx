@@ -1,5 +1,5 @@
 import { Button, Dropdown, Menu } from "antd";
-import { Row } from "components/lib";
+import { ButtonNoPadding, Row } from "components/lib";
 import { ProjectPopover } from "components/ProjectPopover";
 import { ProjectPage } from "pages/Project";
 import { ProjectModal } from "pages/ProjectList/ProjectModal";
@@ -31,16 +31,14 @@ const Main = styled.main`
   height: calc(100vh - 6rem);
 `;
 
-const PageHeader = (props: {
-  setProjectModalOpen: (isOpen: boolean) => void;
-}) => {
+const PageHeader = (props: { projectButton: JSX.Element }) => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <h2 onClick={resetRoute} style={{ cursor: "pointer" }}>
           Ponds
         </h2>
-        <ProjectPopover setProjectModalOpen={props.setProjectModalOpen} />
+        <ProjectPopover projectButton={props.projectButton} />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
@@ -72,14 +70,32 @@ export const AuthenticatedApp = () => {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader setProjectModalOpen={setProjectModalOpen} />
+      <PageHeader
+        projectButton={
+          <ButtonNoPadding
+            type={"link"}
+            onClick={() => setProjectModalOpen(true)}
+          >
+            创建项目
+          </ButtonNoPadding>
+        }
+      />
       <Main>
         <Router>
           <Routes>
             <Route
               path={"/projects"}
               element={
-                <ProjectListPage setProjectModalOpen={setProjectModalOpen} />
+                <ProjectListPage
+                  projectButton={
+                    <ButtonNoPadding
+                      type={"link"}
+                      onClick={() => setProjectModalOpen(true)}
+                    >
+                      创建项目
+                    </ButtonNoPadding>
+                  }
+                />
               }
             />
             <Route path={"/projects/:projectId/*"} element={<ProjectPage />} />
