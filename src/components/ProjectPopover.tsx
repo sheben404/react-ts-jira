@@ -10,7 +10,7 @@ const ContentContainer = styled.div`
 
 export const ProjectPopover = () => {
   const { open } = useProjectModal();
-  const { list: projects } = useProjects();
+  const { data: projects } = useProjects();
   const pinnedProjects = projects?.filter((project) => project.pin);
 
   const content = (

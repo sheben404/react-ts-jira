@@ -17,7 +17,11 @@ export const ProjectListPage = () => {
 
   const { open } = useProjectModal();
   const [param, setParam] = useProjectSearchParam();
-  const { loading, error, list, retry } = useProjects(useDebounce(param, 500));
+  const {
+    isLoading: loading,
+    error,
+    data: list,
+  } = useProjects(useDebounce(param, 500));
   const { users } = useUsers();
 
   return (
@@ -31,7 +35,7 @@ export const ProjectListPage = () => {
       <SearchPanel users={users || []} param={param} setParam={setParam} />
       <ErrorBox error={error} />
       <List
-        refresh={retry}
+        // refresh={retry}
         users={users || []}
         dataSource={list || []}
         loading={loading}
