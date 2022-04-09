@@ -6,7 +6,7 @@ import { Typography } from "antd";
 import { useProjects } from "utils/projects";
 import { useUsers } from "utils/users";
 import { useProjectModal, useProjectSearchParam } from "./utils";
-import { ButtonNoPadding, Row } from "components/lib";
+import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
 
 const Container = styled.div`
   padding: 3.2rem;
@@ -29,9 +29,7 @@ export const ProjectListPage = () => {
         </ButtonNoPadding>
       </Row>
       <SearchPanel users={users || []} param={param} setParam={setParam} />
-      {error ? (
-        <Typography.Text type="danger">{error.message}</Typography.Text>
-      ) : null}
+      <ErrorBox error={error} />
       <List
         refresh={retry}
         users={users || []}

@@ -1,4 +1,5 @@
 import { Button, Card, Divider, Typography } from "antd";
+import { ErrorBox } from "components/lib";
 import { useState } from "react";
 import styled from "styled-components";
 import { useDocumentTitle } from "utils";
@@ -59,9 +60,7 @@ export const UnAuthenticatedApp = () => {
       <Background />
       <ShadowCard>
         <Title>{isRegister ? "请注册" : "请登录"}</Title>
-        {error && (
-          <Typography.Text type={"danger"}>{error.message}</Typography.Text>
-        )}
+        <ErrorBox error={error} />
         {isRegister ? (
           <RegisterPage onError={setError} />
         ) : (
