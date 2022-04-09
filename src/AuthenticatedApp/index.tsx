@@ -1,9 +1,8 @@
 import { Button, Dropdown, Menu } from "antd";
-import { ButtonNoPadding, Row } from "components/lib";
+import { Row } from "components/lib";
 import { ProjectPopover } from "components/ProjectPopover";
 import { ProjectPage } from "pages/Project";
 import { ProjectModal } from "pages/ProjectList/ProjectModal";
-import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
@@ -31,14 +30,14 @@ const Main = styled.main`
   height: calc(100vh - 6rem);
 `;
 
-const PageHeader = (props: { projectButton: JSX.Element }) => {
+const PageHeader = () => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <h2 onClick={resetRoute} style={{ cursor: "pointer" }}>
           Ponds
         </h2>
-        <ProjectPopover projectButton={props.projectButton} />
+        <ProjectPopover />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
@@ -67,46 +66,19 @@ const User = () => {
 };
 
 export const AuthenticatedApp = () => {
-  const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader
-        projectButton={
-          <ButtonNoPadding
-            type={"link"}
-            onClick={() => setProjectModalOpen(true)}
-          >
-            创建项目
-          </ButtonNoPadding>
-        }
-      />
-      <Main>
-        <Router>
+      <Router>
+        <PageHeader />
+        <Main>
           <Routes>
-            <Route
-              path={"/projects"}
-              element={
-                <ProjectListPage
-                  projectButton={
-                    <ButtonNoPadding
-                      type={"link"}
-                      onClick={() => setProjectModalOpen(true)}
-                    >
-                      创建项目
-                    </ButtonNoPadding>
-                  }
-                />
-              }
-            />
+            <Route path={"/projects"} element={<ProjectListPage />} />
             <Route path={"/projects/:projectId/*"} element={<ProjectPage />} />
             <Route path="/" element={<Navigate to="/projects" replace />} />
           </Routes>
-        </Router>
-      </Main>
-      <ProjectModal
-        projectModalOpen={projectModalOpen}
-        onClose={() => setProjectModalOpen(false)}
-      />
+        </Main>
+        <ProjectModal />
+      </Router>
     </Container>
   );
 };

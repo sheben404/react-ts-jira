@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import { useEditProject } from "utils/projects";
 import { User } from "./SearchPanel";
+import { useProjectModal } from "./utils";
 
 export interface Project {
   id: number;
@@ -18,10 +19,10 @@ export interface Project {
 interface ListProps extends TableProps<Project> {
   users: User[];
   refresh?: () => void;
-  projectButton: JSX.Element;
 }
 
 export const List = ({ users, ...props }: ListProps) => {
+  const { open } = useProjectModal();
   const { mutate } = useEditProject();
   const pinProject = (id: number) => (pin: boolean) =>
     mutate({ id, pin }).then(props.refresh);
@@ -82,7 +83,11 @@ export const List = ({ users, ...props }: ListProps) => {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key="edit">{props.projectButton}</Menu.Item>
+                    <Menu.Item key="edit">
+                      <ButtonNoPadding type={"link"} onClick={open}>
+                        编辑
+                      </ButtonNoPadding>
+                    </Menu.Item>
                   </Menu>
                 }
               >
