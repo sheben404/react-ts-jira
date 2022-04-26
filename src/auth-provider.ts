@@ -1,4 +1,4 @@
-import { User } from "pages/ProjectList/SearchPanel";
+import { User } from "types/user";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
