@@ -7,7 +7,7 @@ import { UnAuthenticatedApp } from "./UnAuthenticatedApp";
 function App() {
   const { user } = useAuth();
   return (
-    <div>
+    <div className="App" style={{ height: " 100vh" }}>
       <ErrorBoundary fallbackRender={FullPageErrorFallback}>
         {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
       </ErrorBoundary>

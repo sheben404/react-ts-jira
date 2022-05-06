@@ -5,6 +5,6 @@ html {
   font-size: 62.5%;
 }
 
-html body #root .app {
+html body #root .App {
   min-height: 100vh;
 }

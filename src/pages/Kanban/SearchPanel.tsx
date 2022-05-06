@@ -18,7 +18,7 @@ export const SearchPanel = () => {
   };
 
   return (
-    <Row marginBottom={4} gap>
+    <Row marginBottom={4} gap style={{ marginBottom: "4rem" }}>
       <Input
         style={{ width: "20rem" }}
         placeholder={"任务名"}

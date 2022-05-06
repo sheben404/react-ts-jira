@@ -1,3 +1,4 @@
+import { PageContainer } from "components/lib";
 import styled from "styled-components";
 import { useDocumentTitle } from "utils";
 import { useKanbans } from "utils/kanban";
@@ -7,8 +8,8 @@ import { useKanbanSearchParams, useProjectInUrl } from "./utils";
 
 const ColumnsContainer = styled.div`
   display: flex;
-  overflow: hidden;
-  margin-right: 2rem;
+  flex: 1;
+  overflow-x: scroll;
 `;
 
 export const KanbanPage = () => {
@@ -16,7 +17,7 @@ export const KanbanPage = () => {
   const { data: currentProject } = useProjectInUrl();
   const { data: kanbans } = useKanbans(useKanbanSearchParams());
   return (
-    <div>
+    <PageContainer>
       <h1>{currentProject?.name}看板</h1>
       <SearchPanel />
       <ColumnsContainer>
@@ -24,6 +25,6 @@ export const KanbanPage = () => {
           <KanbanColumn key={kanban.id} kanban={kanban} />
         ))}
       </ColumnsContainer>
-    </div>
+    </PageContainer>
   );
 };

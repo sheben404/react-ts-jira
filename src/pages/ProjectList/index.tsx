@@ -9,6 +9,7 @@ import { useProjectModal, useProjectSearchParam } from "./utils";
 import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
 
 const Container = styled.div`
+  flex: 1;
   padding: 3.2rem;
 `;
 
