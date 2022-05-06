@@ -22,6 +22,7 @@ export default defineConfig({
       utils: resolve(__dirname, "src/utils"),
       context: resolve(__dirname, "src/context"),
       pages: resolve(__dirname, "src/pages"),
+      assets: resolve(__dirname, "src/assets"),
     },
   },
 });

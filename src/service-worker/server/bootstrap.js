@@ -45,7 +45,7 @@ export const bootstrap = (id) => {
   );
   kanbanDB.queryByOwnerId(id).forEach((kanban) => {
     kanbanDB.update(kanban.id, {
-      projectId: projectIds.random(),
+      projectId: 1,
     });
   });
   epicDB.queryByOwnerId(id).forEach((epic) => {
@@ -58,7 +58,7 @@ export const bootstrap = (id) => {
       tags: [tagIds.random()],
       reporterId: userIds.random(),
       processorId: userIds.random(),
-      projectId: projectIds.random(),
+      projectId: 1,
       epicId: epicIds.random(),
       kanbanId: kanbanIds.random(),
       typeId: typeIds.random(),
